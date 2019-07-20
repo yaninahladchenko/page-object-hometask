@@ -4,12 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import test.FilterTest;
 
 public class LandingPage {
     protected WebDriver driver;
 
-    @FindBy(xpath ="//*[@id='block_top_menu']/ul/li[2]")
+    @FindBy(xpath = "//*[@id='block_top_menu']/ul/li[2]")
     private WebElement dressesTopMenuItem;
 
     public LandingPage(WebDriver driver) {
@@ -18,17 +17,15 @@ public class LandingPage {
     }
 
     public boolean isLoaded() {
-        return  dressesTopMenuItem.isDisplayed()
+        return dressesTopMenuItem.isDisplayed()
                 && driver.getTitle().equals("My Store")
                 && driver.getCurrentUrl().endsWith("/index.php");
     }
+
     public WomenDressesPage clickDressesTopMenuItem() {
         dressesTopMenuItem.click();
         return new WomenDressesPage(driver);
     }
-
-
-
 
 
 }

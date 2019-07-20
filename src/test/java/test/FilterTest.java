@@ -15,8 +15,8 @@ import page.WomenDressesPage;
  * 2. Click tab 'Dresses'.
  * 3. Verify http://automationpractice.com/index.php?id_category=8&controller=category is loaded
  * 4. Verify colors selection panel is displayed
- * 5. Click "Yellow" in colors selection panel
- * 6. Check that the number of listed colors (yellow) on the selection panel and the number of colors (yellow)
+ * 5. Click "Orange" in colors selection panel
+ * 6. Check that the number of listed colors (orange) on the selection panel and the number of colors (orange)
  * represented match.
  */
 
@@ -43,11 +43,12 @@ public class FilterTest {
         Assert.assertTrue(landingPage.isLoaded(), "Landing page is not loaded");
         WomenDressesPage womanDressesPage = landingPage.clickDressesTopMenuItem();
         Assert.assertTrue(womanDressesPage.isLoaded(), "Women Dresses page is not loaded");
-
-
-
-
-
+        int expectedItemsCount = womanDressesPage.getOrangeFilterItemCount();
+        System.out.println(expectedItemsCount);
+        womanDressesPage.clickOrangeFilterItem();
+        womanDressesPage.waitUntilProductCountIs(expectedItemsCount);
+        Assert.assertEquals(womanDressesPage.getProductItemsCount(), expectedItemsCount,
+                "Expected and actual number of products do not match.");
     }
 
 
